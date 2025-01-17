@@ -6,6 +6,7 @@
 \include "scherzo-op31-other.ily"
 
 #(ly:expect-warning-times 4 "cyclic dependency")
+#(ly:expect-warning "barcheck failed") % line 486, \new Voice { \acciaccatura
 
 global = {
   \time 3/4
@@ -479,8 +480,11 @@ rightHandUpper = \relative {
   <e cs' e>2.~ |
   <fs cs' fs>2.~ |
   <fs fs'>2.~ |
-  q2. |
-  \acciaccatura { cs'8 } cs2 b4 |
+  q2.-\shape #'((0 . 0) (0 . 0) (0 . 0) (0 . -5)) _~ |
+  << 
+    { \hideNoteHead fs2. } 
+    \new Voice { \acciaccatura { cs'8 } cs2 b4 } 
+  >> |
   <gs e'>2._~ |
   <gs b>2 a4 |
   
