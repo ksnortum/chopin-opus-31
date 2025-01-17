@@ -359,7 +359,7 @@ rightHandUpper = \relative {
   \clef treble \oneVoice cs'2.( |
   \grace { b16 cs } b4. a!8 b4 |
   cs4. d8 cs4 |
-  \grace { b16 cs } b4. a!8 b4 |
+  \grace { b16 cs } b4. a!8 b4 | \break % TODO remove
   
   \barNumberCheck 281
   cs8) \magnifyMusic #2/3 {
@@ -377,17 +377,17 @@ rightHandUpper = \relative {
   <e cs' e>2.~ |
   <fs cs' fs>2.~ |
   <fs fs'>2.~ |
-  q2. |
-  \acciaccatura { cs'8 } a'4 fs d |
-  <gs, e'>2._~ |
+  q2.-\shape #'((0 . 0) (0 . 0) (0 . 0) (0 . -5)) _~ |
+  \hideNoteHead fs2. |
+  <gs e'>2._~ |
   <gs b>2 a4 |
   cs2.~ |
   
   \barNumberCheck 297
   cs2.) |
-  \oneVoice R2. |
+  \oneVoice R2. | \break %TODO remove
   \clef treble cs'2.~( |
-  cs2.~ |
+  cs2.~ | 
   cs8 ds fs e cs a) |
   \appoggiatura { gs16 gs } gs'2.( |
   \appoggiatura { fs16 gs } fs4. e!8 fs4 |
@@ -1123,7 +1123,7 @@ rightHandLower = \relative {
   \hideNoteHead cs2.~ |
   cs4 b cs |
   e4 d4. cs8 |
-  s2. |
+  \oneVoice \acciaccatura { cs8 } a'4 fs d \voiceOne  |
   << { \hideNoteHead e2.~ } \new Voice { \voiceOne cs2. } >>  |
   e2. |
   cs2. |
@@ -3077,7 +3077,7 @@ dynamics = {
   \barNumberCheck 289
   s2. * 3 |
   s2.\< |
-  s2.\! | 
+  \grace { s8\! } s2. | 
   s2.\> |
   s2 s4\! |
   s2. |
@@ -3085,9 +3085,8 @@ dynamics = {
   \barNumberCheck 297
   s2. |
   s2.\glyphOne |
-  s2.\pp |
-  s2.^\slentando |
-  s2. * 4 |
+  s4.\pp s^\slentando |
+  s2. * 5 |
   
   \barNumberCheck 305
   s2. * 2 |
