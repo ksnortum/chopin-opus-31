@@ -469,7 +469,7 @@ rightHandUpper = \relative {
   e8 b a gs e b |
   a8 gs e b a gs |
   \clef bass e8 b a gs e b) |
-  R2. * 2 |
+  R2. * 2 | \break % TODO remove
   <e' cs' e>2.~(^\sostenuto |
   <fs cs' fs>2.~ |
   <fs fs'>2.~ |
@@ -1144,9 +1144,9 @@ rightHandLower = \relative {
   gs2.->) |
   s4 bs8( cs \tuplet 3/2 { e d! cs } |
   cs2.~-> |
-  cs4) bs8( cs \tuplet 3/2 { e d! cs } |
+  cs4) bs8( cs \tuplet 3/2 { e d cs } |
   cs2.~-> |
-  cs4) bs8( cs \tuplet 3/2 { e d! cs } |
+  cs4) bs8( cs \tuplet 3/2 { e d cs } |
   
   \barNumberCheck 321
   cs2.~-> |
@@ -2226,11 +2226,11 @@ leftHandLower = \relative {
   \oneVoice a,4-. cs'( fs,) |
   \voiceTwo gs,4 bs' gs |
   e4 cs' gs |
-  gs,4 bs' gs~ |
+  gs,4 bs' gs^~ |
   
   \barNumberCheck 329
   gs4 cs gs |
-  gs,4 bs' gs~ |
+  gs,4 bs' gs^~ |
   gs4 cs gs |
   b,2.~ |
   <b fs' a ds>2.^> |
