@@ -5,15 +5,11 @@
 
 \include "scherzo-op31-other.ily"
 
-#(ly:expect-warning-times 4 "cyclic dependency")
-#(ly:expect-warning "barcheck failed") % line 486, \new Voice { \acciaccatura
+#(ly:expect-warning-times 2 "cyclic dependency")
 
 global = {
   \time 3/4
   \key bf \minor
-  % \override Staff.Hairpin.to-barline = ##f
-%   \override Staff.Hairpin.after-line-breaking = ##f
-%   \set Staff.extraNatural = ##f
 }
 
 rightHandUpper = \relative {
@@ -89,7 +85,7 @@ rightHandUpper = \relative {
   c8( df ef f gf af |
   bff8-.) r r4 r |
   bff8( af g gf f ff |
-  ef8-.) r r4 r | \break % TODO remove
+  ef8-.) r r4 r |
   
   \barNumberCheck 65
   \voiceOne f2.~(^\conAnima | 
@@ -102,7 +98,7 @@ rightHandUpper = \relative {
   bf2 bf4) |
   
   \barNumberCheck 73
-  \grace { g,16( df' } bf'2)( ef,4~ |
+  \grace { g,16( df' } bf'2)-\slurShapeI ( ef,4~ |
   ef4 f4.-\insideSlur \prall -\insideSlur -\moveNaturalA ^\trillNatural ef8) |
   ef2.( |
   af2.~ |
@@ -167,7 +163,7 @@ rightHandUpper = \relative {
   <c, af'>4-.) \ottava 0 r r |
   gf,8->( c af' \ottava 1 gf c af' |
   <df, f>4-.) \ottava 0 r r |
-  f,,8( df' af' \ottava 1 f df' af' \ottava 0 |
+  f,,8-\slurShapeJ ( df' af' \ottava 1 f df' af' \ottava 0 |
   df,8 f, af df, f, af |
   df,8 \staffDown f, af df, f, df') |
   
@@ -229,7 +225,7 @@ rightHandUpper = \relative {
   R2. |
   
   \barNumberCheck 177
-  R2. | \break % TODO remove
+  R2. |
   \clef bass f,2.\( |
   \grace { d16[( ef!]) } \slashedGrace { f8 } \afterGrace 7/8
     { ef2.~\startTrillSpan % |
@@ -253,7 +249,7 @@ rightHandUpper = \relative {
   c8( df ef f gf af |
   bff8-.) r r4 r |
   bff8( af g gf f ff |
-  ef8-.) r r4 r | \break % TODO remove
+  ef8-.) r r4 r |
   \voiceOne f2.~(^\conAnima | 
   f4 ef4. df8 |
   df2. |
@@ -264,7 +260,7 @@ rightHandUpper = \relative {
   f4 ef df |
   bf'2. |
   bf2 bf4) |
-  \grace { g,16( df' } bf'2)( ef,4~ |
+  \grace { g,16( df' } bf'2)-\slurShapeI ( ef,4~ |
   ef4 f4.-\insideSlur \prall -\insideSlur -\moveNaturalA ^\trillNatural ef8) |
   ef2.( |
   af2.~ |
@@ -332,18 +328,18 @@ rightHandUpper = \relative {
   
   \barNumberCheck 257
   <df, f>4-.) \ottava 0 r r |
-  f,,8( df' af' \ottava 1 f df' af' \ottava 0 |
+  f,,8-\slurShapeJ ( df' af' \ottava 1 f df' af' \ottava 0 |
   df,8 f, af df, f, af |
   df,8 \staffDown f, af df, f, df') |
   \staffUp R2. |
   \ottava 1 <df''' df'>2.-> \ottava 0 |
-  \compressMMRests { R2. * 2 } | \break % TODO remove
+  \compressMMRests { R2. * 2 } |
   
   \barNumberCheck 265
   \bar "||"
   \key a \major
   \clef bass
-  <e,,, cs' e>2.~(^\sostenuto |
+  <e,,, cs' e>2.~-\slurShapeK (^\sostenuto |
   <fs cs' fs>2.~ |
   <fs fs'>2.~ |
   q2. |
@@ -360,7 +356,7 @@ rightHandUpper = \relative {
   \clef treble \oneVoice cs'2.( |
   \grace { b16 cs } b4. a!8 b4 |
   cs4. d8 cs4 |
-  \grace { b16 cs } b4. a!8 b4 | \break % TODO remove
+  \grace { b16 cs } b4. a!8 b4 |
   
   \barNumberCheck 281
   cs8) \magnifyMusic #2/3 {
@@ -369,7 +365,7 @@ rightHandUpper = \relative {
     \ottava 1 cs8 gs gs' cs, gs' cs, |
     cs'8) 
   } \ottava 0 r r4 r |
-  \clef bass <e,,,, cs' e>2.~( 
+  \clef bass <e,,,, cs' e>2.~-\slurShapeM ( 
   <fs cs' fs>2.~ |
   <fs fs'>2.~ |
   q2. |
@@ -378,7 +374,7 @@ rightHandUpper = \relative {
   <e cs' e>2.~ |
   <fs cs' fs>2.~ |
   <fs fs'>2.~ |
-  q2.-\shape #'((0 . 0) (0 . 0) (0 . 0) (0 . -5)) _~ |
+  q2.-\slurShapeN _~ |
   \hideNoteHead fs2. |
   <gs e'>2._~ |
   <gs b>2 a4 |
@@ -386,7 +382,7 @@ rightHandUpper = \relative {
   
   \barNumberCheck 297
   cs2.) |
-  \oneVoice R2. | \break %TODO remove
+  \oneVoice R2. |
   \clef treble cs'2.~( |
   cs2.~ | 
   cs8 ds fs e cs a) |
@@ -407,7 +403,7 @@ rightHandUpper = \relative {
   cs4) r r |
   
   \barNumberCheck 313
-  r4 gs'( fs |
+  r4 gs'-\slurShapeO ( fs |
   e2.~ |
   e4 e ds |
   \oneVoice cs) s2 |
@@ -462,7 +458,7 @@ rightHandUpper = \relative {
   gs8 b e gs fs e |
   c8 a fs e c a |
   \clef bass fs8 e c a fs e) |
-  r4  b'8( e a gs |
+  r4  b'8-\slurShapeR ( e a gs |
   \clef treble b8 e a gs b e |
   a8 gs b e a gs |
   
@@ -470,8 +466,8 @@ rightHandUpper = \relative {
   e8 b a gs e b |
   a8 gs e b a gs |
   \clef bass e8 b a gs e b) |
-  R2. * 2 | \break % TODO remove
-  <e' cs' e>2.~(^\sostenuto |
+  R2. * 2 |
+  <e' cs' e>2.~-\slurShapeS (^\sostenuto |
   <fs cs' fs>2.~ |
   <fs fs'>2.~ |
   
@@ -480,9 +476,9 @@ rightHandUpper = \relative {
   <e cs' e>2.~ |
   <fs cs' fs>2.~ |
   <fs fs'>2.~ |
-  q2.-\shape #'((0 . 0) (0 . 0) (0 . 0) (0 . -5)) _~ |
+  q2.-\slurShapeT _~ |
   << 
-    { \hideNoteHead fs2. } 
+    { \grace { s8 } \hideNoteHead fs2. } 
     \new Voice { \acciaccatura { cs'8 } cs2 b4 } 
   >> |
   <gs e'>2._~ |
@@ -504,7 +500,7 @@ rightHandUpper = \relative {
     \ottava 1 cs8 gs gs' cs, gs' cs, |
     cs'8) 
   } \ottava 0 r r4 r |
-  \clef bass <e,,,, cs' e>2.~( |
+  \clef bass <e,,,, cs' e>2.~-\slurShapeU ( |
   <fs cs' fs>2.~ |
   <fs fs'>2.~ |
   q2. |
@@ -518,7 +514,7 @@ rightHandUpper = \relative {
   cs2. |
   <gs b>2 a4 |
   cs2. |
-  cs2.) |
+  \tag layout { cs2.) } \tag midi { s2. } |
   \oneVoice R2. |
   
   \barNumberCheck 401
@@ -597,12 +593,12 @@ rightHandUpper = \relative {
   gs8( b e gs fs e |
   gs b e gs fs e |
   c8 a fs e c a |
-  fs8 e c a fs e |
-  gs8 b e gs fs e |
+  fs8 e c a fs e) |
+  gs8( b e gs fs e |
   
   \barNumberCheck 457
-  gs8 b e gs fs e |
-  c8 a fs e c a |
+  gs8 b e gs fs e) |
+  c8^( a fs e c a |
   \clef bass fs8 e c a fs e) |
   % like 358
   r4  b'8( e a gs |
@@ -614,14 +610,14 @@ rightHandUpper = \relative {
   \barNumberCheck 465
   \clef bass e8 b a gs e b) |
   R2. * 2 |
-  r4 b'8( f' a gs |
+  r4 b'8-\slurShapeAB ( f' a gs |
   \clef treble b8 f' a gs b f' |
   a8 gs b f' a gs |
   f8 b, a gs f b, |
   a8 gs f b, a gs |
   
   \barNumberCheck 473
-  \clef bass f8 b, a gs g b,) |
+  \clef bass f8 b, a gs f b,) |
   R2. * 2 |
   \clef treble r4 as'''8( gs b es |
   as8 gs b es as gs |
@@ -878,7 +874,7 @@ rightHandUpper = \relative {
   bf4 af gf |
   gf-\insideSlur \prall f4. e8 |
   e2. |
-  f2) af4~( |
+  f2) af4~-\slurShapeW ( |
   % like 97
   \voiceOne af2. |
   
@@ -886,8 +882,6 @@ rightHandUpper = \relative {
   \oneVoice <c, c'>4 <bf bf'>4. <af af'>8 |
   q2.~ |
   <df af' df>2. |
-  % <df df'>2 <c c'>4 |
-%   <c af' c>4. <bf bf'>8 <af af'>4 |
   <df df'>4. <c c'>8 <c gf' af c>4 |
   q4. <bf gf' bf>8 <af gf' af>4
   <f' af f'>2. |
@@ -969,7 +963,7 @@ rightHandUpper = \relative {
   af,4-. r r |
   
   \barNumberCheck 745
-  \ottava 1 <af'' f' af>2.~( |
+  \ottava 1 <af'' f' af>2.~-\slurShapeAA ( |
   q4 <af ef' af> <af f' af> |
   <af ef' af> <af f' af> <af ef' af> |
   \voiceOne <af af'>2.) |
@@ -1113,7 +1107,7 @@ rightHandLower = \relative {
   << { \hideNoteHead e2.~ } \new Voice { \voiceOne cs2. } >>  |
   e2. |
   cs2. |
-  cs2. |
+  \tag layout { cs2. } \tag midi { s2. } |
   s2. * 4 |
   
   \barNumberCheck 281
@@ -1133,7 +1127,7 @@ rightHandLower = \relative {
   cs2. |
   
   \barNumberCheck 297
-  cs2. |
+  \tag layout { cs2. } \tag midi { s2. } |
   s2. * 7 |
   
   \barNumberCheck 305
@@ -1150,7 +1144,7 @@ rightHandLower = \relative {
   cs2.~-> |
   cs4) bs8( cs \tuplet 3/2 { e d cs } |
   cs2.~-> |
-  cs4) bs8( cs \tuplet 3/2 { e d cs } |
+  cs4) bs8-\slurShapeP ( cs \tuplet 3/2 { e d cs } |
   
   \barNumberCheck 321
   cs2.~-> |
@@ -1190,7 +1184,7 @@ rightHandLower = \relative {
   
   \barNumberCheck 377
   cs2. |
-  cs2. |
+  \tag layout { cs2. } \tag midi { s2. } |
   s2. * 6 |
   
   \barNumberCheck 385
@@ -1216,7 +1210,7 @@ rightHandLower = \relative {
     } 
   >>
   cs2.~ |
-  cs2. |
+  \tag layout { cs2. } \tag midi { s2. } |
   s2. |
   
   \barNumberCheck 401
@@ -1235,9 +1229,9 @@ rightHandLower = \relative {
   gs2.->) |
   s4 bs8( cs \tuplet 3/2 { e d! cs } |
   cs2.~-> |
-  cs4) bs8( cs \tuplet 3/2 { e d! cs } |
+  cs4) bs8( cs \tuplet 3/2 { e d cs } |
   cs2.~-> |
-  cs4) bs8( cs \tuplet 3/2 { e d! cs } |
+  cs4) bs8( cs \tuplet 3/2 { e d cs } |
   cs2.~-> |
   cs4) bs8( cs \tuplet 3/2 { e d cs } |
   
@@ -1266,32 +1260,32 @@ rightHandLower = \relative {
   s4 cs!8( d \tuplet 3/2 { f ef d } |
   d2.)~ |
   d4 cs!8( d \tuplet 3/2 { f ef d } |
-  d2.)^~ |
+  d2.)-\tieShapeA ~ |
   d4 cs!8( d \tuplet 3/2 { f ef d } |
   
   \barNumberCheck 497
   d2.)~ |
-  d4 f,8( g \tuplet 3/2 { bf af g } |
+  d4 fs,8( g \tuplet 3/2 { bf af g } |
   g2.)~ |
   g4 fs'!8( g \tuplet 3/2 { bf af g } |
   g2.)~ |
   g4 fs!8( g \tuplet 3/2 { bf af g } |
-  g2.)~ |
+  g2.)-\tieShapeB ^~ |
   g4 fs,!8( g \tuplet 3/2 { bf af g } |
   
   \barNumberCheck 505
   g2.)~ |
   g4 \voiceOne d8( ef \tuplet 3/2 { g f ef } |
   \voiceFour ef2.)~-> |
-  ef4 d'8( ef \tuplet 3/2 { gf ff ef } |
+  ef4 d'!8( ef \tuplet 3/2 { gf ff ef } |
   ef2.)~-> |
-  ef4 d8( ef \tuplet 3/2 { gf ff ef } |
-  ef2.)~-> |
-  ef4 d8( ef \tuplet 3/2 { gf ff ef } |
+  ef4 d!8( ef \tuplet 3/2 { gf ff ef } |
+  ef2.)-\tieShapeC ~-> |
+  ef4 d!8( ef \tuplet 3/2 { gf ff ef } |
   
   \barNumberCheck 513
   ef2.)~-> |
-  ef4 d8( ef \tuplet 3/2 { gf ff ef } |
+  ef4 d!8( ef \tuplet 3/2 { gf ff ef } |
   ef2.)-> |
   ff4 s2 |
   s2. * 4 |
@@ -1354,13 +1348,13 @@ rightHandLower = \relative {
   \barNumberCheck 745
   s2. * 3 |
   \voiceFour f'2 ef4 |
-  f2^( ef4 |
+  f2-\slurShapeX ^( ef4 |
   f2 ef4) |
-  gf!2^( ff4 |
+  gf!2-\slurShapeY ^( ff4 |
   gf!2 ff4) |
   
   \barNumberCheck 753
-  g2^( f!4 |
+  g2-\slurShapeZ ^( f!4 |
   g2 f4) |
   af2( gf!4) |
   s2. * 3 |
@@ -1528,7 +1522,7 @@ leftHandUpper = \relative {
   s2. * 8 |
   
   \barNumberCheck 273
-  d2.~( |
+  d2.~-\slurShapeL ( |
   d2 cs4 |
   e2.~ |
   e2.) |
@@ -1570,7 +1564,7 @@ leftHandUpper = \relative {
   cs4 es cs~ |
   cs4 fs cs |
   s2. |
-  ds,2.( |
+  ds,2.-\slurShapeQ ( |
   e2. |
   fs2. |
   
@@ -1622,7 +1616,7 @@ leftHandUpper = \relative {
   
   \barNumberCheck 393
   s2. * 3 |
-  e2.( |
+  e2.-\slurShapeV ( |
   d2 cs4 |
   e2.~ |
   e2.) |
@@ -1656,7 +1650,7 @@ leftHandUpper = \relative {
   cs4 fs cs |
   s2. |
   % like 326
-  ds,2.( |
+  ds,2.-\slurShapeQ ( |
   e2. |
   fs2. |
   e2. |
@@ -1904,14 +1898,14 @@ leftHandLower = \relative {
   \clef bass bff,8(\> af g gf f ef\! |
   
   \barNumberCheck 65
-  \voiceTwo \slurUp df8)( af' df f df af) |
-  df,8( cf' df f df cf) |
-  gf8( cf df gf df cf) |
-  df,8( bf' df gf df bf) |
-  af8( cf df af' df, cf) |
-  df,8( cf' df f df cf) |
-  gf8( bf df gf df bf) |
-  ff8( bf df af' df, bf) |
+  \voiceTwo \slurUp df8)-\slurShapeA ( af' df f df af) |
+  df,8-\slurShapeB ( cf' df f df cf) |
+  gf8-\slurShapeC ( cf df gf df cf) |
+  df,8-\slurShapeD ( bf' df gf df bf) |
+  af8-\slurShapeE ( cf df af' df, cf) |
+  df,8-\slurShapeF ( cf' df f df cf) |
+  gf8-\slurShapeG ( bf df gf df bf) |
+  ff8-\slurShapeH ( bf df af' df, bf) |
   
   \barNumberCheck 73
   ef,8_\legatoSempre bf' df g df bf |
@@ -2069,16 +2063,16 @@ leftHandLower = \relative {
   bff8-.) r r4 r |
   \clef bass bff,8(\> af g gf f ef\! |
   % like 65
-  \voiceTwo \slurUp df8)( af' df f df af) |
-  df,8( cf' df f df cf) |
-  gf8( cf df gf df cf) |
-  df,8( bf' df gf df bf) |
+  \voiceTwo \slurUp df8)-\slurShapeA ( af' df f df af) |
+  df,8-\slurShapeB ( cf' df f df cf) |
+  gf8-\slurShapeC ( cf df gf df cf) |
+  df,8-\slurShapeD ( bf' df gf df bf) |
   
   \barNumberCheck 201
-  af8( cf df af' df, cf) |
-  df,8( cf' df f df cf) |
-  gf8( bf df gf df bf) |
-  ff8( bf df af' df, bf) |
+  af8-\slurShapeE ( cf df af' df, cf) |
+  df,8-\slurShapeF ( cf' df f df cf) |
+  gf8-\slurShapeG ( bf df gf df bf) |
+  ff8-\slurShapeH ( bf df af' df, bf) |
   ef,8_\legatoSempre bf' df g df bf |
   g8 df' ef bf' ef, df |
   af8 df ef af ef df |
@@ -2296,7 +2290,7 @@ leftHandLower = \relative {
   % like 277
   \oneVoice r4 r <e' g as>( |
   <d fs b>4) r <fs a! d>( |
-  <es gs cs>2 <e g as>4 |
+  <es gs! cs>2 <e g as>4 |
   <d fs b>4) r <fs a! d>( |
   <cs gs' es'>4)\arpeggio r r |
   cs,4 r r |
@@ -2632,16 +2626,16 @@ leftHandLower = \relative {
   bff8-.) r r4 r |
   \clef bass bff,8(\> af g gf f ef\! |
   % like 65
-  \voiceTwo \slurUp df8)( af' df f df af) |
+  \voiceTwo \slurUp df8)-\slurShapeA ( af' df f df af) |
   
   \barNumberCheck 649
-  df,8( cf' df f df cf) |
-  gf8( cf df gf df cf) |
-  df,8( bf' df gf df bf) |
-  af8( cf df af' df, cf) |
-  df,8( cf' df f df cf) |
-  gf8( bf df gf df bf) |
-  ff8( bf df af' df, bf) |
+  df,8-\slurShapeB ( cf' df f df cf) |
+  gf8-\slurShapeC ( cf df gf df cf) |
+  df,8-\slurShapeD ( bf' df gf df bf) |
+  af8-\slurShapeE ( cf df af' df, cf) |
+  df,8-\slurShapeF ( cf' df f df cf) |
+  gf8-\slurShapeG ( bf df gf df bf) |
+  ff8-\slurShapeH ( bf df af' df, bf) |
   % like 73
   ef,8_\legatoSempre bf' df g df bf |
   
@@ -2727,13 +2721,13 @@ leftHandLower = \relative {
   \key a \major 
   <a,, a'>4 <ds ds'>( <e e'>) |
   <e e'>2.-> |
-  r4 df( e |
+  r4 ds( e |
   <a, f'!>2 <a e'>4) |
   <a a'>4 <ds ds'>( <e e'>) |
   
   \barNumberCheck 721
   <e e'>2.-> |
-  r4 df( e |
+  r4 ds( e |
   <a, f'!>2 <a e'>4) |
   \key df \major 
   <a f'>4 r <a a'>( |
@@ -2777,23 +2771,23 @@ leftHandLower = \relative {
   q2. |
   <af ef'>2. |
   \clef bass \oneVoice <df,,, df'>4-. g-._\marcatoMarkup af-. |
-  af4-. <gf! gf'>-. <f f'>-. |
+  af4-. <gf! gf'!>-. <f f'>-. |
   q4-. g( af |
   bff2 af4) |
   <df, df'>4-. g-. af-. |
   
   \barNumberCheck 761
-  af4-. <gf! gf'>-. <f f'>-. |
+  af4-. <gf! gf'!>-. <f f'>-. |
   q4-. g( af |
   bff2 af4) |
   <df, df'>4-. g-. af-. |
-  r4 <gf gf'>( <f f'>) |
+  r4 <gf! gf'!>( <f f'>) |
   <df df'>4-. g-. af-. |
-  r4 <gf gf'>( <f f'>) |
+  r4 <gf! gf'!>( <f f'>) |
   <df df'>4-. g-. af-. |
   
   \barNumberCheck 769
-  r4 <gf gf'>( <f f'>) |
+  r4 <gf! gf'!>( <f f'>) |
   <df bff'>4-. <df af'> <df bff'> |
   <df af'>4 <df bff'> <df af'> |
   <c a'>4-. r r |
@@ -2806,7 +2800,7 @@ leftHandLower = \relative {
   R2. |
   <df, af' df>2.-> |
   R2. |
-  \acciaccatura { <df' af' df>8 } <df,, df'>2.\fermata |
+  \acciaccatura { <df' af' f'>8 } <df,, df'>2.\fermata |
 }
 
 leftHand = {
@@ -2820,14 +2814,13 @@ leftHand = {
 
 dynamics = {
   \override TextScript.Y-offset = -0.5
-  % \override TextSpanner.Y-offset = 0.5
   \override MultiMeasureRestNumber.Y-offset = -1
   \override Hairpin.to-barline = ##f
   \override Hairpin.after-line-breaking = ##f
   \hide MultiMeasureRest
   \tag layout { s2.^\sottoVoce } \tag midi { s2.\pp } |
   s2. * 2 |
-  s2.\glyphOne |
+  s2.\glyphOneA |
   s2.\ff |
   s2.\> |
   s2 s4\! |
@@ -2836,7 +2829,7 @@ dynamics = {
   \barNumberCheck 9
   s2 s4\pp |
   s2. * 2 |
-  s2.\glyphOne |
+  s2.\glyphOneB |
   s2.\ff |
   s2.\> |
   s2 s4\! |
@@ -2848,9 +2841,9 @@ dynamics = {
   \compressMMRests { R2. * 2 } |
   
   \barNumberCheck 25
-  s2 s4\pp |
+  s2 s4-\tweak Y-offset -1 \pp |
   s2. * 2 |
-  s2.\glyphOne |
+  s2.\glyphOneA |
   s2.\ff |
   s2.\> |
   s4.\! s |
@@ -2859,9 +2852,9 @@ dynamics = {
   \barNumberCheck 33
   s2 s4\pp |
   s2. * 2 |
-  s2.\glyphOne |
+  s2.\glyphOneB |
   s2.\ff |
-  s2.\> |
+  s2.-\tweak Y-offset 1 \> |
   s2 s4\! |
   s2. |
   
@@ -2871,7 +2864,7 @@ dynamics = {
   \compressMMRests { R2. * 2 } |
   
   \barNumberCheck 49
-  s2\ff s4\> |
+  s2\ff s4-\tweak Y-offset 1 \> |
   s2 s8 s\! |
   s2. * 2 |
   s2\p\> s8 s\! |
@@ -2941,9 +2934,9 @@ dynamics = {
   \barNumberCheck 129
   s2. * 2 |
   \compressMMRests { R2. * 2 } |
-  s2 s4\p |
+  s2 s4-\tweak Y-offset -1 \p |
   s2. * 2 |
-  s2.\glyphOne |
+  s2.\glyphOneB |
   
   \barNumberCheck 137
   s2.\ff |
@@ -2952,7 +2945,7 @@ dynamics = {
   s2. |
   s2 s4\pp |
   s2. * 2 |
-  s2.\glyphOne |
+  s2.\glyphOneB |
   
   \barNumberCheck 145
   s2.\ff |
@@ -2964,20 +2957,20 @@ dynamics = {
   s2. |
   s4 s2\fz |
   \compressMMRests { R2. * 2 } |
-  s2 s4\pp |
+  s2 s4-\tweak Y-offset -1 \pp |
   s2. * 2 |
-  s2.\glyphOne |
+  s2.\glyphOneA |
   
   \barNumberCheck 161
   s2.\ff |
   s2. * 3 |
   s2 s4\pp |
   s2. * 2 |
-  s2.\glyphOne |
+  s2.-\tweak extra-offset #'(0 . -2) \glyphOneC |
   
   \barNumberCheck 169
-  s2.\ff |
-  s2.\> |
+  s2.-\tweak extra-offset #'(0 . -2) \ff |
+  s2.-\tweak Y-offset -1 \> |
   s2 s4\! |
   s2. * 5 |
   
@@ -2985,7 +2978,7 @@ dynamics = {
   s2. * 2 |
   \grace { s4\< } s2. |
   s2 s8 s\! |
-  s2\ff s4\> |
+  s2-\tweak Y-offset 1 \ff s4-\tweak Y-offset 2 \> |
   s2. |
   s4. s\! |
   s2. |
@@ -3060,7 +3053,7 @@ dynamics = {
   \compressMMRests { R2. * 2 } |
   
   \barNumberCheck 265
-  s2.^\sottoVoceWO |
+  \tag layout { s2.^\sottoVoceWO } \tag midi { s2.\pp } |
   s2. * 5 |
   s2.\< |
   s2 s8 s\! |
@@ -3088,7 +3081,7 @@ dynamics = {
   
   \barNumberCheck 297
   s2. |
-  s2.\glyphOne |
+  s2.\glyphOneD |
   s4.\pp s^\slentando |
   s2. * 5 |
   
@@ -3119,7 +3112,7 @@ dynamics = {
   
   \barNumberCheck 361
   s2. * 4 |
-  s2.\glyphOne |
+  s2.\glyphOneA |
   s2.\f\> |
   s2 s4\! |
   s2. |
@@ -3149,7 +3142,7 @@ dynamics = {
   s2 s4\> |
   s2 s4\! |
   s2. * 2 |
-  s2.\glyphOne |
+  s2.\glyphOneE |
   
   \barNumberCheck 401
   s2.\pp |
@@ -3176,7 +3169,7 @@ dynamics = {
   
   \barNumberCheck 465
   s2. * 2 |
-  s2.\glyphOne |
+  s2.\glyphOneA |
   s4 \tag layout { s2^\sempreF } \tag midi { s2\ff } |
   s2. * 4 |
   
@@ -3237,12 +3230,12 @@ dynamics = {
   s2. * 4 |
   
   \barNumberCheck 577
-  s2.\glyphOne |
+  s2.\glyphOneE |
   s4 s2^\smorzando |
   s2. * 2 |
   s4 s2\pp |
   s2. |
-  s2.\glyphOne |
+  s2.\glyphOneE |
   s2. |
   
   \barNumberCheck 585
@@ -3417,26 +3410,58 @@ dynamics = {
   s2. * 5 |
   
   \barNumberCheck 777
-  s2.\glyphOne |
+  s2.-\tweak Y-offset -2 \glyphOneB |
   s2. |
-  s2.\glyphOne |
+  s2.-\tweak extra-offset #'(0 . -1.5) \glyphOneC |
 }
 
 tempi = {
   \set Score.tempoHideNote = ##t
   \tempo "Presto" 2. = 100
-  
+  s2. * 264 |
+  \tempo 2. = 92
+  s2. * 45 |
+  \tempo 2. = 100
+  s2. * 24 |
+  \tempo 2. = 108
+  s2. * 32 |
+  \tempo 2. = 92
+  s2. * 46 |
+  \tempo 2. = 100
+  s2. * 24 |
+  \tempo 2. = 108
+  s2. * 56 |
+  \tempo 2. = 100
+  s2. * 24 |
+  \tempo 2. = 108
+  s2. * 56 |
+  \tempo 2. = 100
+  s2. * 6 |
+  \tempo 2. = 92
+  s2. * 3 |
+  \tempo 2. = 84
+  s2. * 3 |
+  \tempo 2. = 100
+  s2. * 148 |
+  \tempo 2. = 108
+  s2. * 16 |
+  \tempo 2. = 116
+  s2. * 17 |
+  \tempo 2. = 120
+  s2. * 15 |
+  \tempo 2. = 20
+  s2. |
 }
 
 pedal = {
   s2. * 4 |
-  s2.\sd |
+  s2.-\tweak Y-offset -1 \sd |
   s2. * 2 |
   s2 s8 s\su |
   
   \barNumberCheck 9
   s2. * 4 |
-  s2.\sd |
+  s2.-\tweak Y-offset -1 \sd |
   s2. |
   s2 s4\su |
   s2\sd s8 s\su |
@@ -3449,14 +3474,14 @@ pedal = {
   
   \barNumberCheck 25
   s2. * 4 |
-  s2.\sd |
+  s2.-\tweak Y-offset -1 \sd |
   s2. |
   s2 s8 s\su |
   s2. |
   
   \barNumberCheck 33
   s2. * 4 |
-  s2.\sd |
+  s2.-\tweak Y-offset -4 \sd |
   s2. |
   s2 s4\su |
   s2\sd s8 s\su |
@@ -3468,14 +3493,14 @@ pedal = {
   s2. * 5 |
   
   \barNumberCheck 49
-  s2.\sd |
+  s2.-\tweak Y-offset -4 \sd |
   s2. * 2 |
   s2.\su |
-  s2\sd s8 s\su |
+  s2\sd s8 s-\tweak Y-offset 2 \su |
   s2. * 3 |
   
   \barNumberCheck 57
-  s2.\sd |
+  s2.-\tweak Y-offset -2 \sd |
   s2. * 2 
   s2.\su |
   s2. * 4 |
@@ -3491,7 +3516,7 @@ pedal = {
   s2\sd s8 s\su |
   
   \barNumberCheck 73
-  s2\sd s8 s\su |
+  s2-\tweak Y-offset -1 \sd s8 s-\tweak Y-offset -1 \su |
   s2\sd s8 s\su |
   s2\sd s8 s\su |
   s2\sd s8 s\su |
@@ -3532,7 +3557,7 @@ pedal = {
   
   \barNumberCheck 105
   s2\sd s8 s\su |
-  s2\sd s8 s\su |
+  s2-\tweak Y-offset -2 \sd s8 s\su |
   s2\sd s8 s\su |
   s2\sd s8 s\su |
   s2\sd s8 s\su |
@@ -3547,15 +3572,15 @@ pedal = {
   s2\sd s8 s\su |
   s2.\sd |
   s2 s8 s\su |
-  s2.\sd |
+  s2.-\tweak Y-offset -2 \sd |
   s2 s8 s\su |
   
   \barNumberCheck 121
-  s2.\sd |
+  s2.-\tweak Y-offset -1 \sd |
   s2 s8 s\su |
-  s2.\sd |
+  s2.-\tweak Y-offset -2 \sd |
   s2 s8 s\su |
-  s2.\sd |
+  s2.-\tweak Y-offset -1 \sd |
   s2. * 3 |
   
   \barNumberCheck 129
@@ -3570,7 +3595,7 @@ pedal = {
   s2. * 4 |
   
   \barNumberCheck 145
-  s2.\sd |
+  s2.-\tweak Y-offset -2 \sd |
   s2. |
   s2 s4\su |
   s2. * 2 |
@@ -3588,7 +3613,7 @@ pedal = {
   s2. * 4 |
   
   \barNumberCheck 169
-  s2.\sd |
+  s2.-\tweak Y-offset -4 \sd |
   s2. |
   s2 s4\su |
   s2. * 2 |
@@ -3598,15 +3623,15 @@ pedal = {
   
   \barNumberCheck 177
   s2. * 4 |
-  s2.\sd |
+  s2.-\tweak Y-offset -5 \sd |
   s2. |
   s2 s8 s\su |
   s2. |
   
   \barNumberCheck 185
-  s2\sd s8 s\su |
+  s2\sd s8 s-\tweak Y-offset 3 \su |
   s2. * 3 |
-  s2.\sd |
+  s2.-\tweak Y-offset -1 \sd |
   s2. |
   s2 s8 s\su |
   s2. |
@@ -3623,7 +3648,7 @@ pedal = {
   s2\sd s8 s\su |
   s2\sd s8 s\su |
   s2\sd s8 s\su |
-  s2\sd s8 s\su |
+  s2-\tweak Y-offset -1 \sd s8 s-\tweak Y-offset -1 \su |
   s2\sd s8 s\su |
   s2\sd s8 s\su |
   s2\sd s8 s\su |
@@ -3644,7 +3669,7 @@ pedal = {
   s2\sd s8 s\su |
   s2\sd s8 s\su |
   s2\sd s8 s\su |
-  s2\sd s8 s\su |
+  s2-\tweak Y-offset -1 \sd s8 s\su |
   s2\sd s8 s\su |
   s2\sd s8 s\su |
   
@@ -3664,7 +3689,7 @@ pedal = {
   s2\sd s8 s\su |
   s2\sd s8 s\su |
   s2\sd s8 s\su |
-  s2\sd s8 s\su |
+  s2-\tweak Y-offset -2 \sd s8 s\su |
   s2\sd s8 s\su |
   s2\sd s8 s\su |
   
@@ -3681,15 +3706,15 @@ pedal = {
   \barNumberCheck 249
   s2.\sd |
   s2 s8 s\su |
-  s2.\sd |
+  s2.-\tweak Y-offset -1.5 \sd |
   s2 s8 s\su |
   s2.\sd |
   s2 s8 s\su |
-  s2.\sd |
+  s2.-\tweak Y-offset -1.5 \sd |
   s2 s8 s\su |
   
   \barNumberCheck 257
-  s2.\sd |
+  s2.-\tweak Y-offset -5 \sd |
   s2. * 4 |
   s2 s8 s\su |
   s2. * 2 |
@@ -3701,7 +3726,7 @@ pedal = {
   s2. * 8 |
   
   \barNumberCheck 281
-  s2.\sd |
+  s2.-\tweak Y-offset -1 \sd |
   s2. * 2 |
   s2.\su |
   s2. * 4 |
@@ -3753,11 +3778,11 @@ pedal = {
   s2. |
   s2\sd s8 s\su |
   s2\sd s8 s\su |
-  s2\sd s8 s\su |
+  s2\sd s8 s-\tweak Y-offset -1.5 \su |
   s2. |
   s2.\sd |
   s4. s\su |
-  s2.\sd |
+  s2.-\tweak Y-offset -2 \sd |
   
   \barNumberCheck 353
   s2 s8 s\su |
@@ -3765,7 +3790,7 @@ pedal = {
   s4 s2\su |
   s2.\sd |
   s2 s8 s\su |
-  s2.\sd |
+  s2.-\tweak Y-offset -4 \sd |
   s2. * 2 |
   
   \barNumberCheck 361
@@ -3790,12 +3815,21 @@ pedal = {
   s2. * 8 |
   
   \barNumberCheck 401
-  s2. * 24 |
+  s2. * 7 |
+  s2.\sd |
+  
+  \barNumberCheck 409
+  s2. * 2 |
+  s2.\su |
+  s2. * 5 |
+  
+  \barNumberCheck 417
+  s2. * 8 |
   
   \barNumberCheck 425
   s2. * 2 |
   s2\sd s4\su |
-  s2\sd s8 s\su |
+  s2-\tweak Y-offset -4 \sd s8 s\su |
   s2. |
   s2.\sd |
   s2.\su |
@@ -3826,13 +3860,13 @@ pedal = {
   s2\sd s8 s\su |
   s2\sd s8 s\su |
   s2.\sd |
-  s2 s8 s\su |
+  s2 s8 s-\tweak Y-offset 3 \su |
   s2\sd s8 s\su |
   
   \barNumberCheck 457
-  s2\sd s8 s\su |
-  s2.\sd |
-  s2 s8 s\su |
+  s2\sd s8 s-\tweak Y-offset 3 \su |
+  s2.-\tweak Y-offset -1 \sd |
+  s2 s8 s-\tweak Y-offset 3 \su |
   s2.\sd |
   s2. * 4 |
   
@@ -3846,20 +3880,20 @@ pedal = {
   \barNumberCheck 473
   s2 s8 s\su |
   s2. * 2 |
-  s2.\sd |
+  s2.-\tweak Y-offset -5 \sd |
   s2 s8 s\su |
   s2.\sd |
   s2 s8 s\su |
-  s2.\sd |
+  s2.-\tweak Y-offset -2 \sd |
   
   \barNumberCheck 481
-  s2 s8 s\su |
+  s2 s8 s-\tweak Y-offset 2 \su |
   s2. * 2 |
   s2.\sd |
-  s4. s\su |
+  s4. s-\tweak Y-offset 2 \su |
   s2.\sd |
   s2 s8 s\su |
-  s2.\sd |
+  s2.-\tweak Y-offset -4 \sd |
   
   \barNumberCheck 489
   s4. s\su |
@@ -3873,15 +3907,15 @@ pedal = {
   
   \barNumberCheck 513
   s2. * 3 |
-  s2.\sd |
+  s2.-\tweak Y-offset -2 \sd |
   s2. * 2 |
   s4 s2\su |
-  s2.\sd |
+  s2.-\tweak Y-offset -2 \sd |
   
   \barNumberCheck 521
   s2.\su |
   s2. * 2 |
-  s2.\sd |
+  s2.-\tweak Y-offset -2 \sd |
   s2. * 2 |
   s2 s4\su |
   s2.\sd |
@@ -3900,26 +3934,26 @@ pedal = {
   s2. |
   s8 s\su s2 |
   s2. |
-  s2.\sd |
+  s2.-\tweak Y-offset -3 \sd |
   s2. * 2 |
   s2.\su |
-  s2\sd s8 s\su |
+  s2-\tweak Y-offset -2 \sd s8 s\su |
   
   \barNumberCheck 545
   s2\sd s8 s\su |
   s2\sd s8 s\su |
   s2\sd s8 s\su |
   s2\sd s8 s\su |
-  s2\sd s8 s\su |
+  s2-\tweak Y-offset -1 \sd s8 s\su |
   s2\sd s8 s\su |
   s2\sd s8 s\su |
   s2. |
   
   \barNumberCheck 553
   s2. * 2 |
-  s2\sd s8 s\su |
+  s2-\tweak Y-offset -1 \sd s8 s\su |
   s2. |
-  s2\sd s8 s\su |
+  s2-\tweak Y-offset -2 \sd s8 s\su |
   s2. * 3 |
   
   \barNumberCheck 561
@@ -3949,7 +3983,7 @@ pedal = {
   
   \barNumberCheck 593
   s2. * 3 |
-  s2.\sd |
+  s2.-\tweak Y-offset -2 \sd |
   s2. * 2 |
   s2 s8 s\su |
   s2. |
@@ -3968,7 +4002,7 @@ pedal = {
   
   \barNumberCheck 617
   s2. * 3 |
-  s2.\sd |
+  s2.-\tweak Y-offset -4 \sd |
   s2. |
   s2 s4\su |
   s2. * 2 |
@@ -3977,15 +4011,19 @@ pedal = {
   s2.\sd |
   s8 s\su s2 |
   s2. * 3 |
-  \grace { s4\sd } s2. |
-  s2 s8. s16\su |
-  s2. |
+  \tag layout {
+    \grace { s4-\tweak Y-offset -4 \sd } s2. |
+    s2 s8. s16-\tweak Y-offset -4 \su |
+  }
+  \tag midi { \grace { s4 } s2. * 2 | }
+  s2.-\tweak Y-offset -4 \sd |
   
   \barNumberCheck 633
+  s2. * 2 |
+  s4 s2\su |
+  s2-\tweak Y-offset -2 \sd s8 s\su |
   s2. * 3 |
-  s2\sd s8 s\su |
-  s2. * 3 |
-  s2.\sd |
+  s2.-\tweak Y-offset -4 \sd |
   
   \barNumberCheck 641
   s2. |
@@ -4002,7 +4040,7 @@ pedal = {
   s2\sd s8 s\su |
   s2\sd s8 s\su |
   s2\sd s8 s\su |
-  s2\sd s8 s\su |
+  s2-\tweak Y-offset -1 \sd s8 s-\tweak Y-offset -1 \su |
   
   \barNumberCheck 657
   s2\sd s8 s\su |
@@ -4025,11 +4063,11 @@ pedal = {
   s2\sd s8 s\su |
   
   \barNumberCheck 673
+  s2-\tweak Y-offset -1 \sd s8 s\su |
   s2\sd s8 s\su |
   s2\sd s8 s\su |
-  s2\sd s8 s\su |
-  s2\sd s8 s\su |
-  s2\sd s8 s\su |
+  s2-\tweak Y-offset -1 \sd s8 s\su |
+  s2-\tweak Y-offset -1 \sd s8 s\su |
   s2\sd s8 s\su |
   s2\sd s8 s\su |
   s2.\sd |
@@ -4045,7 +4083,7 @@ pedal = {
   s2\sd s8 s\su |
   
   \barNumberCheck 689
-  s2\sd s8 s\su |
+  s2-\tweak Y-offset -1 \sd s8 s\su |
   s2\sd s8 s\su |
   s2\sd s8 s\su |
   s2\sd s8 s\su |
@@ -4070,19 +4108,19 @@ pedal = {
   s2\sd s8 s\su |
   s2.\sd |
   s2 s8 s\su |
-  s2.\sd |
+  s2.-\tweak Y-offset -1.5 \sd |
   s2 s8 s\su |
-  s2.\sd |
+  s2.-\tweak Y-offset -1 \sd |
   
   \barNumberCheck 713
   s2 s8 s\su |
-  s2.\sd |
+  s2.-\tweak Y-offset -2.5 \sd |
   s2 s8 s\su |
   s2. * 5 |
   
   \barNumberCheck 721
   s2. * 3 |
-  s2 s4\sd |
+  s2 s4-\tweak Y-offset -1 \sd |
   s2. |
   s4\su s2\sd |
   s4\su s2\sd |
@@ -4091,16 +4129,16 @@ pedal = {
   \barNumberCheck 729
   s4\su s2\sd |
   s4\su s2\sd |
-  s4 s\su s\sd |
+  s4 s\su s-\tweak Y-offset -2 \sd |
   s4 s2\su |
   s2. * 3 |
-  s2.\sd |
+  s2.-\tweak Y-offset -2 \sd |
   
   \barNumberCheck 737
   s2. * 2 |
   s2 s4\su |
   s2. * 4 |
-  s2.\sd |
+  s2.-\tweak Y-offset -2 \sd |
   
   \barNumberCheck 745
   s2. * 2 |
@@ -4131,8 +4169,8 @@ pedal = {
   \barNumberCheck 769
   s4 s\sd s\su |
   s2. * 2 |
-  s2\sd s4\su |
-  s2\sd s4\su |
+  s2-\tweak Y-offset -1 \sd s4\su |
+  s2-\tweak Y-offset -1.5 \sd s4\su |
   s2\sd s4\su |
   s2\sd s4\su |
   s2.\sd |
@@ -4144,5 +4182,164 @@ pedal = {
 
 forceBreaks = {
   % page 1
-  % \repeat unfold 10 { s2.\noBreak } s2.\break\noPageBreak
+  \repeat unfold 7 { s2.\noBreak } s2.\break\noPageBreak
+  \repeat unfold 7 { s2.\noBreak } s2.\break\noPageBreak
+  \repeat unfold 6 { s2.\noBreak } s2. * 2 s2.\noBreak s2.\break\noPageBreak
+  \repeat unfold 7 { s2.\noBreak } s2.\break\noPageBreak
+  \repeat unfold 8 { s2.\noBreak } s2.\pageBreak
+  
+  % page 2
+  \repeat unfold 3 { s2.\noBreak } s2. * 2 \repeat unfold 3 { s2.\noBreak }
+    s2.\break\noPageBreak
+  \repeat unfold 5 { s2.\noBreak } s2.\break\noPageBreak
+  \repeat unfold 5 { s2.\noBreak } s2.\break\noPageBreak
+  \repeat unfold 5 { s2.\noBreak } s2.\break\noPageBreak
+  \repeat unfold 5 { s2.\noBreak } s2.\pageBreak
+  
+  % page 3
+  \repeat unfold 5 { s2.\noBreak } s2.\break\noPageBreak
+  \repeat unfold 5 { s2.\noBreak } s2.\break\noPageBreak
+  \repeat unfold 5 { s2.\noBreak } s2.\break\noPageBreak
+  \repeat unfold 5 { s2.\noBreak } s2.\break\noPageBreak
+  \repeat unfold 5 { s2.\noBreak } s2.\pageBreak
+  
+  % page 4
+  \repeat unfold 5 { s2.\noBreak } s2.\break\noPageBreak
+  \repeat unfold 5 { s2.\noBreak } s2.\break\noPageBreak
+  \repeat unfold 6 { s2.\noBreak } s2.\break\noPageBreak
+  \repeat unfold 5 { s2.\noBreak } s2. * 2 s2.\break\noPageBreak
+  \repeat unfold 7 { s2.\noBreak } s2.\pageBreak
+  
+  % page 5
+  \repeat unfold 7 { s2.\noBreak } s2.\break\noPageBreak
+  \repeat unfold 5 { s2.\noBreak } s2. * 2 s2.\noBreak s2.\noBreak
+    s2.\break\noPageBreak
+  \repeat unfold 7 { s2.\noBreak } s2.\break\noPageBreak
+  \repeat unfold 9 { s2.\noBreak } s2.\break\noPageBreak
+  \repeat unfold 6 { s2.\noBreak } s2.\pageBreak
+  
+  % page 6
+  \repeat unfold 5 { s2.\noBreak } s2.\break\noPageBreak
+  \repeat unfold 5 { s2.\noBreak } s2.\break\noPageBreak
+  \repeat unfold 5 { s2.\noBreak } s2.\break\noPageBreak
+  \repeat unfold 5 { s2.\noBreak } s2.\break\noPageBreak
+  \repeat unfold 5 { s2.\noBreak } s2.\pageBreak
+  
+  % page 7
+  \repeat unfold 5 { s2.\noBreak } s2.\break\noPageBreak
+  \repeat unfold 5 { s2.\noBreak } s2.\break\noPageBreak
+  \repeat unfold 5 { s2.\noBreak } s2.\break\noPageBreak
+  \repeat unfold 5 { s2.\noBreak } s2.\break\noPageBreak
+  \repeat unfold 5 { s2.\noBreak } s2.\pageBreak
+  
+  % page 8
+  \repeat unfold 5 { s2.\noBreak } s2.\break\noPageBreak
+  \repeat unfold 5 { s2.\noBreak } s2.\break\noPageBreak
+  \repeat unfold 6 { s2.\noBreak } s2. * 2 \break\noPageBreak
+  \repeat unfold 8 { s2.\noBreak } s2.\break\noPageBreak
+  \repeat unfold 6 { s2.\noBreak } s2.\pageBreak
+  
+  % page 9
+  \repeat unfold 7 { s2.\noBreak } s2.\break\noPageBreak
+  \repeat unfold 9 { s2.\noBreak } s2.\break\noPageBreak
+  \repeat unfold 7 { s2.\noBreak } s2.\break\noPageBreak
+  \repeat unfold 6 { s2.\noBreak } s2.\break\noPageBreak
+  \repeat unfold 6 { s2.\noBreak } s2.\pageBreak
+  
+  % page 10
+  \repeat unfold 6 { s2.\noBreak } s2.\break\noPageBreak
+  \repeat unfold 6 { s2.\noBreak } s2.\break\noPageBreak
+  \repeat unfold 5 { s2.\noBreak } s2.\break\noPageBreak
+  \repeat unfold 5 { s2.\noBreak } s2.\break\noPageBreak
+  \repeat unfold 5 { s2.\noBreak } s2.\pageBreak
+  
+  % page 11
+  \repeat unfold 5 { s2.\noBreak } s2.\break\noPageBreak
+  \repeat unfold 6 { s2.\noBreak } s2.\break\noPageBreak
+  \repeat unfold 8 { s2.\noBreak } s2.\break\noPageBreak
+  \repeat unfold 7 { s2.\noBreak } s2.\break\noPageBreak
+  \repeat unfold 6 { s2.\noBreak } s2.\pageBreak
+  
+  % page 12
+  \repeat unfold 7 { s2.\noBreak } s2.\break\noPageBreak
+  \repeat unfold 7 { s2.\noBreak } s2.\break\noPageBreak
+  \repeat unfold 5 { s2.\noBreak } s2.\break\noPageBreak
+  \repeat unfold 5 { s2.\noBreak } s2.\break\noPageBreak
+  \repeat unfold 5 { s2.\noBreak } s2.\pageBreak
+  
+  % page 13
+  \repeat unfold 5 { s2.\noBreak } s2.\break\noPageBreak
+  \repeat unfold 5 { s2.\noBreak } s2.\break\noPageBreak
+  \repeat unfold 5 { s2.\noBreak } s2.\break\noPageBreak
+  \repeat unfold 5 { s2.\noBreak } s2.\break\noPageBreak
+  \repeat unfold 5 { s2.\noBreak } s2.\pageBreak
+  
+  % page 14
+  \repeat unfold 5 { s2.\noBreak } s2.\break\noPageBreak
+  \repeat unfold 5 { s2.\noBreak } s2.\break\noPageBreak
+  \repeat unfold 6 { s2.\noBreak } s2.\break\noPageBreak
+  \repeat unfold 6 { s2.\noBreak } s2.\break\noPageBreak
+  \repeat unfold 5 { s2.\noBreak } s2.\pageBreak
+  
+  % page 15
+  \repeat unfold 5 { s2.\noBreak } s2.\break\noPageBreak
+  \repeat unfold 5 { s2.\noBreak } s2.\break\noPageBreak
+  \repeat unfold 5 { s2.\noBreak } s2.\break\noPageBreak
+  \repeat unfold 5 { s2.\noBreak } s2.\break\noPageBreak
+  \repeat unfold 5 { s2.\noBreak } s2.\pageBreak
+  
+  % page 16
+  \repeat unfold 5 { s2.\noBreak } s2.\break\noPageBreak
+  \repeat unfold 5 { s2.\noBreak } s2.\break\noPageBreak
+  \repeat unfold 5 { s2.\noBreak } s2.\break\noPageBreak
+  \repeat unfold 4 { s2.\noBreak } s2.\break\noPageBreak
+  \repeat unfold 4 { s2.\noBreak } s2.\pageBreak
+  
+  % page 17
+  \repeat unfold 5 { s2.\noBreak } s2.\break\noPageBreak
+  \repeat unfold 5 { s2.\noBreak } s2.\break\noPageBreak
+  \repeat unfold 5 { s2.\noBreak } s2.\break\noPageBreak
+  \repeat unfold 5 { s2.\noBreak } s2.\break\noPageBreak
+  \repeat unfold 5 { s2.\noBreak } s2.\pageBreak
+  
+  % page 18
+  \repeat unfold 6 { s2.\noBreak } s2.\break\noPageBreak
+  \repeat unfold 7 { s2.\noBreak } s2.\break\noPageBreak
+  \repeat unfold 7 { s2.\noBreak } s2.\break\noPageBreak
+  \repeat unfold 9 { s2.\noBreak } s2. * 2 \break\noPageBreak
+  \repeat unfold 7 { s2.\noBreak } s2.\pageBreak
+  
+  % page 19
+  \repeat unfold 7 { s2.\noBreak } s2.\break\noPageBreak
+  \repeat unfold 8 { s2.\noBreak } s2.\break\noPageBreak
+  \repeat unfold 5 { s2.\noBreak } s2.\break\noPageBreak
+  \repeat unfold 6 { s2.\noBreak } s2.\break\noPageBreak
+  \repeat unfold 5 { s2.\noBreak } s2.\pageBreak
+  
+  % page 20
+  \repeat unfold 5 { s2.\noBreak } s2.\break\noPageBreak
+  \repeat unfold 5 { s2.\noBreak } s2.\break\noPageBreak
+  \repeat unfold 5 { s2.\noBreak } s2.\break\noPageBreak
+  \repeat unfold 5 { s2.\noBreak } s2.\break\noPageBreak
+  \repeat unfold 5 { s2.\noBreak } s2.\pageBreak
+  
+  % page 21
+  \repeat unfold 5 { s2.\noBreak } s2.\break\noPageBreak
+  \repeat unfold 5 { s2.\noBreak } s2.\break\noPageBreak
+  \repeat unfold 5 { s2.\noBreak } s2.\break\noPageBreak
+  \repeat unfold 5 { s2.\noBreak } s2.\break\noPageBreak
+  \repeat unfold 5 { s2.\noBreak } s2.\pageBreak
+  
+  % page 22
+  \repeat unfold 5 { s2.\noBreak } s2.\break\noPageBreak
+  \repeat unfold 5 { s2.\noBreak } s2.\break\noPageBreak
+  \repeat unfold 5 { s2.\noBreak } s2.\break\noPageBreak
+  \repeat unfold 5 { s2.\noBreak } s2.\break\noPageBreak
+  \repeat unfold 6 { s2.\noBreak } s2.\pageBreak
+  
+  % page 23
+  \repeat unfold 7 { s2.\noBreak } s2.\break\noPageBreak
+  \repeat unfold 6 { s2.\noBreak } s2.\break\noPageBreak
+  \repeat unfold 6 { s2.\noBreak } s2.\break\noPageBreak
+  \repeat unfold 6 { s2.\noBreak } s2.\break\noPageBreak
 }

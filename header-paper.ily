@@ -13,7 +13,7 @@
   source = "https://vmirror.imslp.org/files/imglnks/usimg/2/22/IMSLP79846-PMLP02355-FChopin_Scherzo_No2_Op31.pdf" % SrcB
   copyright = \markup { 
     \center-column { \concat {
-      "Copyright © 2024 Knute Snortum. This piece licensed under the " 
+      "Copyright © 2025 Knute Snortum. This piece licensed under the " 
       \with-url #"https://creativecommons.org/licenses/by-sa/4.0/" 
       "CC BY-SA 4.0 License."
     } }
@@ -24,7 +24,6 @@
   ragged-right = ##f
   ragged-last-bottom = ##f
   min-systems-per-page = 5
-  page-count = 23 % TODO remove
 
   system-system-spacing =
     #'((basic-distance . 8) 
@@ -57,7 +56,7 @@
 \layout {
   \context {
     \Score
-    % \omit BarNumber % TODO uncomment
+    \omit BarNumber
     \override Slur.details.free-head-distance = 0.75
   }
   \context {
